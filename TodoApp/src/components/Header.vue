@@ -8,6 +8,7 @@
 </template>
 <script>
 import { ref } from "vue";
+import axios from "axios";
 export default {
   name: "Header",
   setup(props, context) {
@@ -19,6 +20,14 @@ export default {
         context.emit("addTodo", inputValue);
         newTodo.value = "";
       }
+      axios
+        .post("http://localhost:8080/TodoAppp/insert", newTodo)
+        .then((response) => {
+          alert("등록완료!");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     };
     return {
       newTodo,

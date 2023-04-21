@@ -1,6 +1,8 @@
 <template>
   <main>
-    <ul></ul>
+    <ul>
+      <item />
+    </ul>
   </main>
 </template>
 
