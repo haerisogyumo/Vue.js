@@ -15,19 +15,12 @@ export default {
     const newTodo = ref("");
     const btnAddTodo = () => {
       console.log(newTodo.value);
+
       if (newTodo.value !== "") {
         const inputValue = newTodo.value && newTodo.value.trim();
         context.emit("addTodo", inputValue);
         newTodo.value = "";
       }
-      axios
-        .post("http://localhost:8080/TodoAppp/insert", newTodo)
-        .then((response) => {
-          alert("등록완료!");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
     };
     return {
       newTodo,

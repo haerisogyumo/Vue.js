@@ -1,8 +1,8 @@
 <template>
   <li v-for="(todo, index) in todos" :key="index">
     <i class="fa-solid fa-check"></i>
-    {{ todo }}
-    <button v-on:click="btnDelete(index)">삭제</button>
+    {{ todo.content }}
+    <button v-on:click="btnDelete(index, todo.no)">삭제</button>
   </li>
 </template>
 <script>
@@ -13,8 +13,9 @@ export default {
   setup() {
     const store = useStore();
     const todos = computed(() => store.getters.todos);
-    const btnDelete = (index) => {
-      store.dispatch("removeTodo", index);
+
+    const btnDelete = (index, no) => {
+      store.dispatch("removeTodo", { index, no });
     };
 
     return { todos, btnDelete };
