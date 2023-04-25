@@ -24,7 +24,7 @@
             <tbody>
               <tr>
                 <td class="text-center">1</td>
-                <td class="text-left">제목입니다</td>
+                <td class="text-left block" @click="btnView">제목입니다</td>
                 <td class="text-center">진윤희</td>
                 <td class="text-center">12</td>
                 <td class="text-center">23-04-25</td>
@@ -66,6 +66,10 @@ const router = useRouter();
 
 const btnWrite = () => {
   router.push("/write");
+};
+
+const btnView = () => {
+  router.push("/view");
 };
 </script>
 <style scoped></style>

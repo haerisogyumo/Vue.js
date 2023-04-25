@@ -46,14 +46,13 @@
 </template>
 <script setup>
 import { useRouter } from "vue-router";
-
-const router = useRouter;
+const router = useRouter();
 
 const btnRegister = () => {
-  router.push("/list");
+  router.push("/user/terms");
 };
 const btnLogin = () => {
-  router.push("user/terms");
+  router.push("/list");
 };
 </script>
 <style scoped></style>
