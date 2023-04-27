@@ -4,7 +4,7 @@ const userStore = createStore({
   state: {
     user: null,
   },
-  mutation: {
+  mutations: {
     SET_USER(state, user) {
       state.user = user;
     },
