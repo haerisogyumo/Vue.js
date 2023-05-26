@@ -9,9 +9,12 @@
   <hr />
 
   <h4>3)LifeCycle Hooks</h4>
+  <HooksComponent v-if="isShow"></HooksComponent>
+  <button @click="btnToggle">컴포넌트 {{ status }}</button>
   <hr />
 
   <h4>4)Dependency Injection</h4>
+  <DIComponent></DIComponent>
   <hr />
 </template>
 
@@ -27,9 +30,34 @@
  */
 import Component1 from "./components/sub1/Component1.vue";
 import MyComponent1 from "./components/sub2/MyComponent1.vue";
+import HooksComponent from "./components/sub3/HooksComponent.vue";
+import DIComponent from "./components/sub4/DIComponent.vue";
+import { ref, reactive, provide } from "vue";
 
 export default {
   name: "App",
-  components: { Component1, MyComponent1 },
+  setup() {
+    // Hooks
+    const isShow = ref(true);
+    const status = ref("삭제");
+    const btnToggle = () => {
+      if (isShow.value) {
+        isShow.value = false;
+        status.value = "생성";
+      } else {
+        isShow.value = true;
+        status.value = "삭제";
+      }
+    };
+    // DI
+    const user = reactive({
+      name: "김유신",
+      age: 23,
+      addr: "김해시",
+    });
+    provide("user", user); // app 컴포넌트 => 하위 모든 컴포넌트 : user 참조가능
+    return { isShow, status, btnToggle };
+  },
+  components: { Component1, MyComponent1, HooksComponent, DIComponent },
 };
 </script>
